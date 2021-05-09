@@ -1,0 +1,14 @@
+name: "test"
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Run pipeline
+        uses: juliandittmann/action-test@master
+        with:
+          version: ci
+          appVersion: '1.0'
+          appBuild: ${{github.run_number}}
+          appRevision: 0

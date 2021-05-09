@@ -1,0 +1,45 @@
+name: 'Testing for windows'
+description: 'tester'
+author: 'Julian Dittmann'
+inputs:
+  version: 
+    desciption: 'ci,current,nextminor,nextmajor'
+    required: true
+  appBuild:
+    description: 'appBuild'
+    required: true
+  appRevision:
+    desciption: 'AppRevision'
+    required: true
+  appVersion: 
+    description: 'Appversion'
+    required: false
+  licenseFile: 
+    desciption: 'LicenseFile path'
+    required: false
+  insiderSasToken:
+    description: 'InsideSasToken'
+    required: false
+  codeSignCertPfxFile:
+    desciption: 'CodeSignPfxFile path'
+    required: false
+  codeSignCertPfxPassword:
+    description: 'CodeSignPfxFile password'
+    required: false
+  applicationInsightsKey:
+      description: 'ApplicationInsightsKey'
+      required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Run AL Pipeline
+      env:
+        InsiderSasToken: ${{ inputs.insiderSasToken }}
+        LicenseFile: ${{ inputs.licenseFile }}
+        CodeSignCertPfxFile: ${{ inputs.codeSignCertPfxFile }}
+        CodeSignCertPfxPassword: ${{ inputs.codeSignCertPfxPassword }}
+        ApplicationInsightsKey: ${{ inputs.applicationInsightsKey }}
+      run: ${{ github.action_path }}\scripts\DevOps-Pipeline.ps1 -environment GitHubActions -version ${{inputs.version}} -appBuild ${{inputs.appBuild}} -appRevision ${{inputs.appRevision}}
+      shell: powershell
+     
