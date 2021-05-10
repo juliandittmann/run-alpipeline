@@ -6,7 +6,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Run pipeline
-        uses: juliandittmann/run-alpipeline@dev
+        uses: juliandittmann/run-alpipeline@master
         with:
           version: ci
           appVersion: '1.0'
