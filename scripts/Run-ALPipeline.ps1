@@ -22,6 +22,9 @@ $baseFolder = (Get-Item (Join-Path $ENV:GITHUB_WORKSPACE "..")).FullName
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment $environment -version $version
 . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion -genericImageName $genericImageName
 
+Write-Host 'Base folder ='$baseFolder
+Write-Host 'BuildArtifactFolder ='$buildArtifactFolder
+
 $params = @{}
 $insiderSasToken = "$ENV:insiderSasToken"
 $licenseFile = "$ENV:licenseFile"
