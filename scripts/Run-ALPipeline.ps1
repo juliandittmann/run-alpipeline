@@ -18,7 +18,7 @@ elseif ($environment -eq "GitHubActions") {
     New-Item $buildArtifactFolder -ItemType Directory | Out-Null
 }
 
-$baseFolder = (Get-Item (Join-Path $ENV:GITHUB_WORKSPACE "..")).FullName
+$baseFolder = (Get-Item $ENV:GITHUB_WORKSPACE).FullName
 . (Join-Path $PSScriptRoot "Read-Settings.ps1") -environment $environment -version $version
 . (Join-Path $PSScriptRoot "Install-BcContainerHelper.ps1") -bcContainerHelperVersion $bcContainerHelperVersion -genericImageName $genericImageName
 

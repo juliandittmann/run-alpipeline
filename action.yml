@@ -40,6 +40,6 @@ runs:
         CodeSignCertPfxFile: ${{ inputs.codeSignCertPfxFile }}
         CodeSignCertPfxPassword: ${{ inputs.codeSignCertPfxPassword }}
         ApplicationInsightsKey: ${{ inputs.applicationInsightsKey }}
-      run: ${{ github.action_path }}\scripts\DevOps-Pipeline.ps1 -environment GitHubActions -version ${{inputs.version}} -appBuild ${{inputs.appBuild}} -appRevision ${{inputs.appRevision}}
+      run: ${{ github.action_path }}\scripts\Run-ALPipeline.ps1 -environment GitHubActions -version ${{inputs.version}} -appBuild ${{inputs.appBuild}} -appRevision ${{inputs.appRevision}}
       shell: powershell
      
