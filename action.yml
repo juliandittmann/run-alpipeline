@@ -1,5 +1,5 @@
-name: 'Testing for windows'
-description: 'tester'
+name: 'run-alpipeline'
+description: 'Runs a pipeline for AL projects'
 author: 'Julian Dittmann'
 inputs:
   version: 
