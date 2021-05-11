@@ -1,4 +1,4 @@
-name: "test"
+name: "main-CI"
 on: [push]
 
 jobs:
