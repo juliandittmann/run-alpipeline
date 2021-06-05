@@ -1,5 +1,5 @@
 Param(
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory = $false)]
     [ValidateSet('Local', 'AzureDevOps', 'GithubActions', 'GitLab')]
     [string] $environment = 'Local',
     [string] $version = ""
@@ -14,12 +14,13 @@ if ($environment -ne 'Local') {
 $settingsrelativpath = Get-ChildItem -Path $ENV:GITHUB_WORKSPACE -Recurse -Name "settings.json" -Depth 1
 if ($settingsRelativPath) {
     $settingspath = Join-Path $ENV:GITHUB_WORKSPACE $settingsRelativPath
-} else {
+}
+else {
     $settingspath = Join-Path $PSScriptRoot "settings.json"
 }
 
 $settings = (Get-Content ($settingspath) | ConvertFrom-Json)
-if ("$version" -eq "")  {
+if ("$version" -eq "") {
     $version = $settings.versions[0].version
     Write-Host "Version not defined, using $version"
 }
@@ -47,22 +48,13 @@ if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=containerName]$containerName"
 }
 
-"installApps", "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "memoryLimit", "appFolders", "testFolders" ,"additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
+"installApps", "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "memoryLimit", "appFolders", "testFolders" , "additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
     $str = ""
     if ($buildversion.PSObject.Properties.Name -eq $_) {
         $str = $buildversion."$_"
     }
     elseif ($settings.PSObject.Properties.Name -eq $_) {
         $str = $settings."$_"
-    }
-    Write-Host "Set $_ = '$str'"
-    Set-Variable -Name $_ -Value "$str"
-}
-
-"appFolders", "testFolders"  | ForEach-Object {
-    $str = ""
-    if ($settings.PSObject.Properties.Name -eq $_) {
-        $str = Join-Path $ENV:GITHUB_WORKSPACE $settings."$_"
     }
     Write-Host "Set $_ = '$str'"
     Set-Variable -Name $_ -Value "$str"
