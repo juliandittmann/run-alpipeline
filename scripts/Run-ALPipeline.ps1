@@ -78,6 +78,7 @@ Run-AlPipeline @params `
     -gitHubActions:($environment -eq 'GitHubActions') `
     -AppSourceCopMandatoryAffixes $appSourceCopMandatoryAffixes `
     -AppSourceCopSupportedCountries $appSourceCopSupportedCountries `
+    -assignPremiumPlan $assignPremiumPlan `
     -additionalCountries $additionalCountries `
     -buildArtifactFolder $buildArtifactFolder `
     -CreateRuntimePackages:$CreateRuntimePackages `
