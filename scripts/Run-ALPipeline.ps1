@@ -44,6 +44,11 @@ if ("$ENV:ApplicationInsightsKey" -ne "") {
     $params.Add("applicationInsightsKey",$applicationInsightKey)
 }
 
+if ("$ENV:ApplicationInsightsConnectionString" -ne "") {
+    $applicationInsightsConnectionString = "$ENV:ApplicationInsightsConnectionString"
+    $params.Add("applicationInsightsConnectionString",$applicationInsightsConnectionString)
+}
+
 $allTestResults = "testresults*.xml"
 $testResultsFile = Join-Path $baseFolder "TestResults.xml"
 $testResultsFiles = Join-Path $baseFolder $allTestResults

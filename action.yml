@@ -3,31 +3,34 @@ description: 'Runs a pipeline for AL projects'
 author: 'Julian Dittmann'
 inputs:
   version: 
-    desciption: 'ci,current,nextminor,nextmajor'
+    description: 'ci,current,nextminor,nextmajor'
     required: true
   appBuild:
     description: 'appBuild'
     required: true
   appRevision:
-    desciption: 'AppRevision'
+    description: 'AppRevision'
     required: true
   appVersion: 
     description: 'Appversion'
     required: false
   licenseFile: 
-    desciption: 'LicenseFile path'
+    description: 'LicenseFile path'
     required: false
   insiderSasToken:
     description: 'InsideSasToken'
     required: false
   codeSignCertPfxFile:
-    desciption: 'CodeSignPfxFile path'
+    description: 'CodeSignPfxFile path'
     required: false
   codeSignCertPfxPassword:
     description: 'CodeSignPfxFile password'
     required: false
   applicationInsightsKey:
       description: 'ApplicationInsightsKey'
+      required: false
+  applicationInsightsConnectionString:
+      description: 'ApplicationInsightsConnectionString'
       required: false
 
 runs:
