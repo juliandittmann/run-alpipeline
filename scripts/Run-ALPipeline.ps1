@@ -65,6 +65,7 @@ Run-AlPipeline @params `
     -baseFolder $baseFolder `
     -licenseFile $LicenseFile `
     -installApps $installApps `
+    -installTestApps $installTestApps `
     -previousApps $previousApps `
     -appFolders $appFolders `
     -testFolders $testFolders `

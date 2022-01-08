@@ -48,7 +48,7 @@ if ($environment -eq 'AzureDevOps') {
     Write-Host "##vso[task.setvariable variable=containerName]$containerName"
 }
 
-"installApps", "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "memoryLimit", "appFolders", "testFolders" , "additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
+"installApps", "installTestApps" , "previousApps", "appSourceCopMandatoryAffixes", "appSourceCopSupportedCountries", "memoryLimit", "appFolders", "testFolders" , "additionalCountries", "genericImageName", "vaultNameForLocal", "bcContainerHelperVersion" | ForEach-Object {
     $str = ""
     if ($buildversion.PSObject.Properties.Name -eq $_) {
         $str = $buildversion."$_"
