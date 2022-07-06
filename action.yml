@@ -45,6 +45,7 @@ runs:
         ApplicationInsightsKey: ${{ inputs.applicationInsightsKey }}
         ApplicationInsightsConnectionString: ${{ inputs.applicationInsightsConnectionString }}
       run: |
+        chcp
         chcp 65001
         ${{ github.action_path }}\scripts\Run-ALPipeline.ps1 -environment GitHubActions -version ${{inputs.version}} -appBuild ${{inputs.appBuild}} -appRevision ${{inputs.appRevision}}
       shell: powershell
